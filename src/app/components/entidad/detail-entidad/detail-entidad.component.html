@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="container d-flex justify-content-center">
+    <div class="card w-50">
+        <div class="card-header">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item">
+                    <h3 class="d-inline-block">Entidad</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="formEntidad">
+                <div class="mb-3">
+                    <label for="nro_documento" class="form-label"><strong>Nro documento:</strong></label>
+                    <input type="text" class="form-control" name="nro_documento" id="nro_documento"
+                        formControlName="nro_documento">
+                </div>
+                <div class="mb-3">
+                    <label for="razon_social" class="form-label"><strong>Razon social:</strong></label>
+                    <input type="text" class="form-control" name="razon_social" id="razon_social"
+                        formControlName="razon_social">
+                </div>
+                <div class="mb-3">
+                    <label for="nombre_comercial" class="form-label"><strong>Nombre Comercial:</strong></label>
+                    <input type="text" class="form-control" name="nombre_comercial" id="nombre_comercial"
+                        formControlName="nombre_comercial">
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label"><strong>Direccion:</strong></label>
+                    <input type="text" class="form-control" name="direccion" id="direccion"
+                        formControlName="direccion">
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label"><strong>Telefono:</strong></label>
+                    <input type="text" class="form-control" name="telefono" id="telefono"
+                        formControlName="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><strong>Estado:</strong></label>
+                    <select class="form-select form-select-lg" id="estado" name="estado" formControlName="estado">
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nombreTipoDocumento" class="form-label"><strong>Tipo Documento:</strong></label>
+                    <input type="text" class="form-control" name="nombreTipoDocumento" id="nombreTipoDocumento"
+                        formControlName="nombreTipoDocumento">
+                </div>
+                <div class="mb-3">
+                    <label for="nombreTipoContribuyente" class="form-label"><strong>Tipo Contribuyente:</strong></label>
+                    <input type="text" class="form-control" name="nombreTipoContribuyente" id="nombreTipoContribuyente"
+                        formControlName="nombreTipoContribuyente">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

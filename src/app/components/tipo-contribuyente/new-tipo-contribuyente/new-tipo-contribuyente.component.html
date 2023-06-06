@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container d-flex justify-content-center">
+  <div class="card w-50">
+    <div class="card-header">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <h3 class="d-inline-block">Registro de tipo de Contribuyente</h3>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formTipoContribuyente" (ngSubmit)="createTipoContribuyentee()">
+        <div class="mb-3">
+          <label for="nombre" class="form-label"><strong>Nombre:</strong></label>
+          <input type="text" class="form-control" name="nombre" id="nombre" formControlName="nombre">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label"><strong>Estado:</strong></label>
+          <select class="form-select form-select-lg" id="estado" name="estado"formControlName="estado">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+          </select>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-success" type="submit" [disabled]="formTipoContribuyente.invalid || formTipoContribuyente.pending">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
