@@ -10,8 +10,8 @@ export class IndexComponent implements OnInit{
 
   roles: Array<string> = [];
   isLogged = false;
-  nombreUsuario = '';
-  rol = '';
+  nombreUsuario : string = '';
+  rol: string = '';
 
   constructor(private tokenService: TokenService){
 
@@ -20,12 +20,8 @@ export class IndexComponent implements OnInit{
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
-      this.nombreUsuario = this.tokenService.getUsername() ?? '';
-      this.roles = this.tokenService.getAuthorities();
-      this.rol = 'Usuario';
-      if (this.roles.includes('ROLE_ADMIN')) {
-        this.rol = 'Admin'
-      } 
+      this.nombreUsuario = this.tokenService.getUsername() ?? '';    
+      this.rol = this.tokenService.isAdmin() ? 'admin' : 'user';
     } else {
       this.isLogged = false;
       this.nombreUsuario = '';

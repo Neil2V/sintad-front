@@ -15,12 +15,10 @@ export class LoginComponent implements OnInit {
 
   public formLogin !: FormGroup;
 
-  isLogged = false;
-  isLoginFail = false;
+
   loginUser: LoginUser | undefined;
   username: string | undefined;
   password: string | undefined;
-  roles: string[] = [];
   msgError: string | undefined;
   
 
@@ -34,9 +32,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formLoginn();
-    if(this.tokenService.getToken()){
-      this.isLogged = true;
-    }
+ 
   }
 
   formLoginn(): void{
@@ -49,21 +45,17 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
      this.authService.signin(this.formLogin.value).subscribe(
         (data) => {
-          this.isLogged = true;
 
           this.tokenService.setToken(data.token);
-          this.tokenService.setUsername(data.username);
-          this.tokenService.setAuthorities(data.authorities);
-          this.roles = data.authorities;
+        
           this.router.navigate(['/']);
-          this.toastr.success('Bienvenido ' + data.username, 'Ok!', {
+          this.toastr.success('Bienvenido ' , 'Ok!', {
             timeOut: 3000,
             positionClass: 'toast-top-center'
           });
         },
         (err) => {
-          this.isLogged = false;
-    
+          
           this.toastr.error('Error', 'Fail!', {
             timeOut: 3000,
             positionClass: 'toast-top-center'

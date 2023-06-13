@@ -15,12 +15,14 @@ import { NewEntidadComponent } from './components/entidad/new-entidad/new-entida
 import { EditEntidadComponent } from './components/entidad/edit-entidad/edit-entidad.component';
 import { DetailEntidadComponent } from './components/entidad/detail-entidad/detail-entidad.component';
 
+import { LoginGuard as guardLogin} from './components/guards/login.guard';
+
 
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent, canActivate: [guardLogin]},
+  {path: 'signup', component: SignupComponent, canActivate: [guardLogin]},
   {path: 'tipo-documento/list', component: ListTipoDocumentoComponent, canActivate: [guardTipoDocumento], data: {expectedRol: ['admin', 'user']}},
   {path: 'tipo-documento/add', component: NewTipoDocumentoComponent, canActivate: [guardTipoDocumento], data: {expectedRol: ['admin']}},
   {path: 'tipo-documento/edit/:id', component: EditTipoDocumentoComponent, canActivate: [guardTipoDocumento], data: {expectedRol: ['admin']}},

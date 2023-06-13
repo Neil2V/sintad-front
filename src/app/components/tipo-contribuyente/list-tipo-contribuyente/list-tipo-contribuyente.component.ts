@@ -13,7 +13,6 @@ import { TokenService } from 'src/app/service/token.service';
 export class ListTipoContribuyenteComponent implements OnInit{
   tipoContribuyentes: TipoContribuyente[] = [];
   page! : number;
-  roles: string[] | undefined;
   isAdmin = false;
 
   constructor(
@@ -25,12 +24,7 @@ export class ListTipoContribuyenteComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadTipoContribuyente();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if(rol === 'ROLE_ADMIN'){
-        this.isAdmin = true;
-      }
-    })
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   loadTipoContribuyente(): void{

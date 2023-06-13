@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TipoDocumento } from '../models/tipo-documento';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TipoDocumentoService {
 
-  tipoDocumentoUrl = 'http://localhost:8080/sintad/tipo-documento';
+  tipoDocumentoUrl = environment.tipoDocumentoUrl;
 
   constructor(
     private httpCliente : HttpClient

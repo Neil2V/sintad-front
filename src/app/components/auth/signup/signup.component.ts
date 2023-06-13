@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
 
   public formSignup !: FormGroup;
 
-  isLogged = false;
+ 
   name: string | undefined;
   username: string | undefined;
   email: string | undefined;
@@ -34,9 +34,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSignupp();
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    }
+   
   }
 
   formSignupp(): void{

@@ -14,7 +14,6 @@ export class ListTipoDocumentoComponent implements OnInit{
 
   tipoDocumentos: TipoDocumento[] = [];
   page! : number;
-  roles: string[] | undefined;
   isAdmin = false;
 
   constructor(
@@ -26,12 +25,7 @@ export class ListTipoDocumentoComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadTipoDocumentos();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if(rol === 'ROLE_ADMIN'){
-        this.isAdmin = true;
-      }
-    })
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   loadTipoDocumentos(): void{

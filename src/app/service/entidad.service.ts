@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Entidad } from '../models/entidad';
 import { Observable } from 'rxjs';
 import { NewEntidad } from '../models/new-entidad';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntidadService {
 
-  entidadUrl = 'http://localhost:8080/sintad/entidad';
+  entidadUrl = environment.entidadUrl;
 
   constructor(private httpCliente : HttpClient) { }
 

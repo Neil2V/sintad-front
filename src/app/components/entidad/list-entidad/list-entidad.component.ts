@@ -13,7 +13,7 @@ import { TokenService } from 'src/app/service/token.service';
 export class ListEntidadComponent  implements OnInit{
   entidades: Entidad[] = [];
   page! : number;
-  roles: string[] | undefined;
+  
   isAdmin = false;
 
   constructor(
@@ -25,12 +25,7 @@ export class ListEntidadComponent  implements OnInit{
 
   ngOnInit(): void {
     this.loadEntidades();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if(rol === 'ROLE_ADMIN'){
-        this.isAdmin = true;
-      }
-    })
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   loadEntidades(): void{
